@@ -1,4 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Components.Web
+@using System.Timers 
+
 <h1>Countdown</h1>
 
 <p>@count</p>
@@ -10,6 +12,14 @@
     private void startCountdown()
     {
         count = 10;
+        Timer timer = new Timer(1000);
+        timer.Elapsed += (source, e) =>
+        {
+            count--;
+            InvokeAsync(() => StateHasChanged());
+            if (count == 0) timer.Stop();
+        };
+        timer.Start();
     }
 
 }
