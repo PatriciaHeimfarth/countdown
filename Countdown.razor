@@ -1,5 +1,15 @@
-﻿<h3>Countdown</h3>
+﻿@using Microsoft.AspNetCore.Components.Web
+<h1>Countdown</h1>
+
+<p>@count</p>
+
+<button @onclick="startCountdown">Start</button>
 
 @code {
+    private int count = 0;
+    private void startCountdown()
+    {
+        count = 10;
+    }
 
 }
